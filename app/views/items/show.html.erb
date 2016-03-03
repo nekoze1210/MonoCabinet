@@ -15,5 +15,16 @@
   <%= @item.image_url %>
 </p>
 
+<p>
+  <strong>latitude:</strong>
+  <%= @item.latitude %>
+</p>
+
+<p>
+  <strong>longitude:</strong>
+  <%= @item.longitude %>
+</p>
+
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
+

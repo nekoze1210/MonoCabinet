@@ -23,6 +23,13 @@
     <%= f.label :image_url %><br>
     <%= f.text_area :image_url %>
   </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_area :address %>
+  </div>
+    <%= javascript_include_tag 'location', 'data-turbolinks-track' => true %>
+    <%= f.hidden_field :latitude%>
+    <%= f.hidden_field :longitude%>
   <div class="actions">
     <%= f.submit %>
   </div>
