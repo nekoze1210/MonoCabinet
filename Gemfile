@@ -48,4 +48,4 @@ gem 'pry-rails'
 gem 'devise'
 gem 'paperclip'
 gem 'geocoder'
-gem 'websocket-rails'
+
