@@ -11,14 +11,6 @@
     </div>
   <% end %>
 
-  <%=
-  javascript_tag(%(
-  window.onload=function default() {
-    alert("#{hoge}");
-  }
- ))
-%>
-
   <div class="field">
     <%= f.label :item_name %><br>
     <%= f.text_field :item_name %>

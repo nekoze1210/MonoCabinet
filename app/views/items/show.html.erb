@@ -16,13 +16,8 @@
 </p>
 
 <p>
-  <strong>latitude:</strong>
-  <%= @item.latitude %>
-</p>
-
-<p>
-  <strong>longitude:</strong>
-  <%= @item.longitude %>
+  <strong>address:</strong>
+  <%= @item.address %>
 </p>
 
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@item.latitude}%2C#{@item.longitude}"%>
