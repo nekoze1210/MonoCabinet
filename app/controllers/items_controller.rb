@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.create(item_params)
+    @item = Item.create(item_name: item_params[:item_name], maker: item_params[:maker], image: item_params[:image], address: item_params[:address], latitude: item_params[:latitude], longitude: item_params[:longitude], user_id: current_user.id )
 
     respond_to do |format|
       if @item.save
