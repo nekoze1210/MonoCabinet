@@ -8,15 +8,12 @@
 </head>
 <body>
 <%= render partial: 'common/header' %>
-
-<%= bootstrap_flash %>
+<p id="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<%= yield %>
-
-
-
-
+<div class="container-fluid">
+  <%= yield %>
+</div>
 
 </body>
 </html>

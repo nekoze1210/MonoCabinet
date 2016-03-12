@@ -1,3 +1,4 @@
+  <%= javascript_include_tag 'location', 'data-turbolinks-track' => true %>
 <%= form_for(@item) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
@@ -25,8 +26,8 @@
 
     <%= f.hidden_field :latitude%>
     <%= f.hidden_field :longitude%>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  <%= javascript_include_tag 'location', 'data-turbolinks-track' => true %>
+
+    <%= f.submit :class => "btn-primary" %>
+
+
 <% end %>

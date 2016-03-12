@@ -6,13 +6,23 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.all.order("created_at DESC").page(params[:page]).per(12)
+
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
     @item = Item.find(params[:id])
+    @hash = Gmaps4rails.build_markers(@item) do |item, marker|
+      marker.lat item.latitude
+      marker.lng item.longitude
+      marker.json({item_name: item.item_name})
+    end
+  end
+
+  def search
+    @items = Item.where('item_name LIKE(?)', "%#{params[:keyword]}").limit(20)
   end
 
   # GET /items/new
@@ -74,4 +84,5 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:item_name, :maker, :image, :address, :latitude,:longitude)
     end
+
 end
