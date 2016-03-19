@@ -2,18 +2,17 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all.order("created_at DESC").page(params[:page]).per(12)
-
+    @user = current_user
+    @items = @user.items.includes(:user).order("created_at DESC").page(params[:page]).per(12)
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
-    @item = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
     @hash = Gmaps4rails.build_markers(@item) do |item, marker|
       marker.lat item.latitude
       marker.lng item.longitude
@@ -27,6 +26,7 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
+    @user = User.find(params[:user_id])
     @item = Item.new
   end
 
@@ -38,40 +38,41 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.create(item_name: item_params[:item_name], maker: item_params[:maker], image: item_params[:image], address: item_params[:address], latitude: item_params[:latitude], longitude: item_params[:longitude], user_id: current_user.id )
-
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @item.save
+    #     format.html { redirect_to @item, notice: '登録されました。' }
+    #     format.json { render :show, status: :created, location: @item }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @item.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
-    respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @item }
-      else
-        format.html { render :edit }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to controller: :items, action: :show
+    # respond_to do |format|
+    #   if @item.update(item_params)
+    #     format.html { redirect_to @item, notice: '編集されました。' }
+    #     format.json { render :show, status: :ok, location: @item }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @item.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
-    @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to controller: :items, action: :index
+    # @item.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to items_url, notice: '削除されました。' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

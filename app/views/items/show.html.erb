@@ -1,50 +1,59 @@
-<p id="notice"><%= notice %></p>
-<script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" type="text/javascript"></script>
-<script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
-
-<div class="thumbnail col-md-12 col-xs-4">
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @item.image.url %>
-</p>
-
-<p>
-  <strong>Item name:</strong>
-  <%= @item.item_name %>
-</p>
-
-<p>
-  <strong>Maker:</strong>
-  <%= @item.maker %>
-</p>
 
 
+<div class="col-md-9" style="padding-top: 20px;">
 
-<p>
-  <strong>address:</strong>
-  <%= @item.address %>
-</p>
+  <div class="col-md-6" >
+    <%= image_tag @item.image.url, :size => "250 x 250", :class => 'img img-responsive' %>
+  </div>
 
-<div style='width: 800px;'>
-  <div id="map" style='width: 600px; height: 400px;'></div>
+  <div class="col-md-6"style="width: 300px;height: 300px;">
+    <p>
+    <%= @item.item_name %>
+    </p>
+
+    <p>
+    <strong>Maker:</strong>
+    <%= @item.maker %>
+    </p>
+  </div>
+
+
+
+    <div id="map" style='width: 600px; height: 400px;'></div>
+
+
+  <script src="//maps.google.com/maps/api/js?v=3.22&amp;&amp;libraries=geometry" type="text/javascript"></script>
+  <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
+  <script type="text/javascript">
+      handler = Gmaps.build('Google');
+      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers(<%=raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+  </script>
+
+  </div>
+
+<div class="col-md-3 nav-otoshimonno">
+  <ul>
+
+  <li><button type="button" class="btn btn-circle">カエッタ</button></li>
+  <li><button type="button" class="btn btn-circle">ナクシタ</button></li></li>
+  <li><button type="button" class="btn btn-circle">アッタ</button></li>
+  </ul>
 </div>
 
-<script type="text/javascript">
-    handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-      markers = handler.addMarkers(<%=raw @hash.to_json %>);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-    });
-</script>
-
-<br>
-  <%= link_to '編集', edit_item_path(@item), :class => 'btn btn-default' %>
-  <%= link_to '削除',  item_path(params[:id]),  method: :delete, :class => 'btn btn-danger' %>
-  <%= link_to '戻る', items_path,  :class => 'btn btn-default' %>
 
 
 <br>
 <br>
-<br>
+<div class="col-md-12" style="margin: 10px 0;">
+  <%= link_to '編集',"/users/#{current_user.id}/items/#{@item.id}/edit", :class => 'btn btn-default' %>
+  <%= link_to '削除',  user_item_path(current_user.id,@item.id),  method: :delete, :class => 'btn btn-danger' %>
+  <%= link_to '戻る', user_items_path,  :class => 'btn btn-default' %>
 </div>
+<br>
+<br>
+<br>
+

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :items
 
+  resources :users, only: :show  do
+    resources :items
+  end
   root 'top#welcome'
   get '/help' => 'top#help'
 

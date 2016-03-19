@@ -6,14 +6,18 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<%= render partial: 'common/header' %>
-<p id="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<body id="home">
+  <% unless controller.action_name == "welcome" %>
+    <%= render partial: 'common/header' %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
 
-<div class="container-fluid">
   <%= yield %>
-</div>
+
+
+<% unless controller_name =="items" || controller_name == "users" %>
+  <%= render partial: 'common/footer'%>
+<%end%>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
- <nav class="navbar navbar-default navbar-fixed-top">
+ <nav class="navbar-default stuckMenu isStuck" role="navigation">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -8,39 +8,36 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/" style="  font-style: 'AIRSTREA';">Otoshimonno</a>
+        <a class="navbar-brand" href="/" style="font-size: 40px" >Otoshimonno<span class="span-head" style="font-size: 18px;">-ｵﾄｼﾓﾝﾉ-</span></a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           </li>
         </ul>
-        <form class="navbar-form navbar-left" role="search">
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+          <form class="navbar-form navbar-left" role="search">
           <div class="form-search search-only">
-          <i class="search-icon glyphicon glyphicon-search"></i>
             <input type="text" class="form-control search-query" placeholder="検索">
           </div>
         </form>
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-          <li class="nav"><%= link_to 'お出かけ前に登録しよう', new_item_path %></li>
+          <li class="nav"><%= link_to 'お出かけ前に登録しよう', " /users/#{current_user.id}:/items/new" %></li>
+          <li class="nav"><a>ﾚﾍﾞﾙ</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.nickname %>さん<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">マイページ</a></li>
-              <li><a href="/items">アイテム一覧</a></li>
+              <li><a href="/users/<%=current_user.id%>">マイページ</a></li>
+              <li><a href="/users/:user_id/items">アイテム一覧</a></li>
               <li><a href="/help">ヘルプ</a></li>
               <li class="divider"></li>
               <li><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
           <%else%>
+          <li><%= link_to 'サインイン', new_user_session_path %></li>
           <li><a href="/help">ヘルプ</a></li>
           <%end%>
-
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-
-
-
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

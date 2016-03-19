@@ -1,24 +1,32 @@
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+
+
+<div class="text-center top-h1" style="background-color:#79D1B0;">
+  <h1 style="font-family:AIRSTREAM; letter-spacing: 5px;">Otoshimonno<span style="font-size: 20px;">-オトシモンノ-</span></h1>
+  <p >おっちょこちょいなあなたに、忘れ物・落し物をしない習慣を付けてくれます。</p>
+  <a><%= link_to '新規登録', new_user_registration_path ,  :class => 'btn btn-lg btn-primary' %></a>
+  <a><%= link_to 'ログイン', new_user_session_path,  :class => 'btn btn-lg btn-warning' %></a>
+</div>
+
+<div id="carousel-example-generic" class="carousel slide cal2" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
+
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
 
     <div class="item active">
-      <%= image_tag ("carousel1.jpg") %>
-      <div class="carousel-caption">
-        <h1 class="text-center">Otoshimonno</h1>
-        <p class="text-center">忘れ物・落し物をしない習慣を付けてくれるアプリ</p>
-      </div>
+      <%= image_tag ("carousel1.jpg")%>
     </div>
     <div class="item">
-      <%= image_tag ("carousel2.jpeg") %>
-      <div class="carousel-caption">
-        インターネットの拾得物掲示板を実現
-      </div>
+      <%= image_tag ("carousel2.jpeg")%>
+    </div>
+    <div class="item">
+      <%= image_tag ("carousel3.jpg") %>
     </div>
   </div>
 
@@ -33,11 +41,61 @@
   </a>
 </div>
 
-<hr>
 
 
-<div class="text-center">
-  <%= link_to '新規登録', new_user_registration_path ,  :class => 'btn btn-default' %>
-  <%= link_to 'ログイン', new_user_session_path,  :class => 'btn btn-default' %>
-  <%= link_to 'もっと詳しく', '#',  :class => 'btn btn-default' %>
-</div>
+  <div class="content-section-a" style="border-top: 0">
+    <div class="container">
+
+      <div class="col-md-6 col-md-offset-3 text-center wrap_title">
+        <h2>What is?</h2>
+        <p class="lead">オトシモンノは落し物を探す為のアプリではありません。</p>
+        <p class="lead">落し物・忘れ物を無くす最大の手段として、常に今いる場所を手動で更新していただきます。</p>
+          <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4 wow fadeInDown text-center">
+          <%= image_tag 'icon/tweet.svg', :class => 'rotate' ,:alt => 'alt="Generic placeholder image'%>
+          <h3>Register on Twitter</h3>
+          <p class="lead">Oath認証で面倒な登録を省きます。</p>
+
+          <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+        </div><!-- /.col-lg-4 -->
+
+        <div class="col-sm-4 wow fadeInDown text-center">
+           <%= image_tag 'icon/map.svg', :class => 'rotate' ,:alt => 'alt="Generic placeholder image'%>
+           <h3>Google</h3>
+           <p class="lead">位置情報でアイテムの位置を登録。更新する程アイテムを監視していることになります。 </p>
+           <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+        </div><!-- /.col-lg-4 -->
+
+        <div class="col-sm-4 wow fadeInDown text-center">
+          <%= image_tag 'icon/browser.svg', :class => 'rotate' ,:alt => 'alt="Generic placeholder image'%>
+           <h3>SoLaF</h3>
+         <p class="lead">地域別の拾得物掲示板機能も実装。</p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+    </div>
+  </div>
+
+
+
+  <hr align="center" width="30%">
+  <div class="sign">
+    <h3 class="text-center">まずは新規登録から！</h3>
+    <div class="text-center">
+      <%= link_to '新規登録', new_user_registration_path ,  :class => 'btn btn-lg btn-primary' %>
+      <%= link_to 'ログイン', new_user_session_path,  :class => 'btn btn-lg btn-warning' %>
+    </div>
+  </div>
+  <hr align="center" width="30%">
+<br><br><br><br><br>
+
+
+
+
+  </div>
+
+
+
+

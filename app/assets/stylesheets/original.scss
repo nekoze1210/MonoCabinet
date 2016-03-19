@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'AIRSTREAM';
+  src: font-url('AIRSTREA.TTF') format('transition-duration: time;etype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'abstract';
+  src: font-url('abstract.ttf') format('transition-duration: time;etype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.navbar-brand{
+  font-family: 'AIRSTREAM';
+  font-size: 30px;
+  color:#95A5A6;
+}
+
+
+
+.item{
+  width: 100%;
+}
+
+.cal2{
+  padding: 0;
+}
+
+.top-h1{
+  margin: 0;
+}
+

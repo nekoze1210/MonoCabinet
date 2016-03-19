@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require bootstrap
- *= require bootflat
+ *= require font-awesome
  *= require_self
+ *= require_tree
  */
+

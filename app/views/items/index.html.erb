@@ -1,33 +1,33 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" style="padding-top: 10px"><%= notice %></p>
 
+<div class="container">
 
-
-<%= link_to 'New Item', new_item_path %>
-
-<h1>ItemLine</h1>
-
+<%= link_to 'New Item', new_user_item_path, :class => 'btn btn-default'%>
 <div class="row-fruid">
-  <%@items.each do |item| %>
-    <div class="col-md-3 col-xs-12">
+
+ <%@items.each do |item| %>
+    <div class="col-md-6 col-xs-12">
     <div class="thumbnail ">
-      <% if item.image? %><a href="/items/<%= item.id %>"><%=image_tag item.image.url, :class => 'img-rounded' %></a>
+      <% if item.image? %><a href="/users/<%=current_user.id%>/items/<%= item.id %>"><%=image_tag item.image.url, :size => "300x300"%></a>
       <%else%>
-      <a href="/items/<%= item.id %>"><%=image_tag 'noimage.png' %>
+      <a href="/users/<%=current_user.id%>/items/<%= item.id %>"><%=image_tag 'noimage.png' %>
       <%end%>
 
       <div class="caption text-center">
-        <h3><a href="/items/<%= item.id %>">【<%= item.maker %>】<%= item.item_name %></a></h3>
+        <h3><a href="/user/<%=current_user.id%>/item/<%=item.id%>">【<%= item.maker %>】<%= item.item_name %></a></h3>
         <p><%=item.address%></p>
         <p><small><%= link_to current_user.nickname, root_path %>さん</small></p>
+        <p><%= link_to '編集',"/users/#{current_user.id}/items/#{item.id}/edit"  %></p>
       </div>
     </div>
   </div>
-    <% end %>
+<% end %>
+  </div>
   </div>
 <br>
 
 
-<div class="col-md-12">
+<div class="col-md-12 text-center">
 <%= paginate(@items) %>
   </div>
 
