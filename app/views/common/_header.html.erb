@@ -18,16 +18,16 @@
           <% if user_signed_in? %>
           <form class="navbar-form navbar-left" role="search">
           <div class="form-search search-only">
-            <input type="text" class="form-control search-query" placeholder="検索">
+            <input type="text" class="form-control search-query" placeholder="ケンサク">
           </div>
         </form>
-          <li class="nav"><%= link_to 'お出かけ前に登録しよう', " /users/#{current_user.id}:/items/new" %></li>
-          <li class="nav"><a>ﾚﾍﾞﾙ</a></li>
+          <li class="nav"><%= link_to 'ツイカ', " /users/#{current_user.id}:/items/new" %></li>
+          <!-- <li class="nav"><a>ﾚﾍﾞﾙ</a></li> -->
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.nickname %>さん<span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.nickname %>サン<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="/users/<%=current_user.id%>">マイページ</a></li>
-              <li><a href="/users/:user_id/items">アイテム一覧</a></li>
+              <li><%= link_to 'アイテム一覧', user_items_path(current_user) %></li>
               <li><a href="/help">ヘルプ</a></li>
               <li class="divider"></li>
               <li><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %></li>

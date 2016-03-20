@@ -13,11 +13,6 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     @item = current_user.items.find(params[:id])
-    @hash = Gmaps4rails.build_markers(@item) do |item, marker|
-      marker.lat item.latitude
-      marker.lng item.longitude
-      marker.json({item_name: item.item_name})
-    end
   end
 
   def search
@@ -28,6 +23,7 @@ class ItemsController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @item = Item.new
+    @item.locations.build
   end
 
   # GET /items/1/edit
@@ -37,7 +33,10 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.create(item_name: item_params[:item_name], maker: item_params[:maker], image: item_params[:image], address: item_params[:address], latitude: item_params[:latitude], longitude: item_params[:longitude], user_id: current_user.id )
+
+    @item = Item.create(item_params)
+
+
     # respond_to do |format|
     #   if @item.save
     #     format.html { redirect_to @item, notice: '登録されました。' }
@@ -83,7 +82,8 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:item_name, :maker, :image, :address, :latitude,:longitude)
-    end
+
+      params.require(:item).permit(:item_name, :maker, :image, locations_attributes:[:latitude, :longitude, :id]).merge(user_id: current_user.id)
+      end
 
 end

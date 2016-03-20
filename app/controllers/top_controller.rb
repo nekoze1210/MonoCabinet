@@ -6,6 +6,8 @@ before_action :move_to_items
   def help
   end
 
+  def developer
+  end
 
 private
   def move_to_items

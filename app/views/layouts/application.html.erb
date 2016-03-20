@@ -6,7 +6,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body id="home">
+<body class="animated fadeIn">
   <% unless controller.action_name == "welcome" %>
     <%= render partial: 'common/header' %>
     <p class="alert"><%= alert %></p>
