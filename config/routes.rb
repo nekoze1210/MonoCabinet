@@ -3,12 +3,14 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]  do
     resources :items do
-      resources :locations, only: [:lost, :create, :arrived, :update]
+      resources :locations
     end
   end
   root 'top#welcome'
   get '/help' => 'top#help'
   get '/developer' => 'top#developer'
+  get '/contact' => 'top#contact'
+  get '/delete' => 'items#deleted'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,4 +1,4 @@
-<div class="text-center">
+<div class="container text-center">
 <h2>サインイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -20,7 +20,7 @@
   <% end -%>
 
   <div>
-    <%= f.submit "Log in", :class => 'btn btn-default' %>
+    <%= f.submit "Log in", :class => 'btn btn-warning' %>
   </div>
 <% end %>
 

@@ -17,8 +17,8 @@
           <%= f.file_field :image %>
         </div>
        <%= f.fields_for :locations do |b| %>
-        <%= b.text_field :latitude  %>
-        <%= b.text_field :longitude  %>
+        <%= b.hidden_field :latitude  %>
+        <%= b.hidden_field :longitude  %>
         <% end %>
         </div>
           <%= f.submit "Submit", :class => "btn btn-primary" %>
@@ -26,3 +26,26 @@
     <% end %>
   </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var options = {
+
+        timeout: 60000,
+        maximumAge: 0
+    };
+    window.navigator.geolocation.getCurrentPosition(success, error, options);
+}, false);
+
+function success(pos) {
+  console.log("aaa")
+    console.log(pos.coords.latitude)
+    document.getElementById('item_locations_attributes_0_latitude').value = pos.coords.latitude;
+    document.getElementById('item_locations_attributes_0_longitude').value = pos.coords.longitude;
+}
+
+function error(err) {
+    console.warn('ERROR(' + err.code + '): ' + err.message);
+}
+</script>
+

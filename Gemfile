@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.3.13', '< 0.5'
+gem 'mysql2', '0.3.18'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # gem 'less-rails'
@@ -56,3 +56,9 @@ gem 'twitter-bootswatch-rails-helpers'
 gem 'gmaps4rails'
 gem 'font-awesome-rails'
 gem 'paperclip'
+
+
+group :production, :staging do
+  gem 'rails_12factor'
+  gem 'pg'
+end

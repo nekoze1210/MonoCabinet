@@ -1,0 +1,30 @@
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var options = {
+        timeout: 60000,
+        maximumAge: 0
+    };
+    window.navigator.geolocation.getCurrentPosition(success, error, options);
+}, false);
+function success(pos) {
+  console.log("aaa")
+    console.log(pos.coords.latitude)
+    document.getElementById('location_latitude').value = pos.coords.latitude;
+    document.getElementById('location_longitude').value = pos.coords.longitude;
+}
+
+function error(err) {
+    console.warn('ERROR(' + err.code + '): ' + err.message);
+}
+</script>
+
+<div class="container text-center">
+<h3>現在地を登録します。</h3>
+  <%= form_for @location, :url =>{:controller => 'locations', :action => 'create' }   do |f| %>
+  <%= f.hidden_field :latitude  %>
+  <%= f.hidden_field :longitude  %>
+<%= f.submit "準備完了!", :class => "btn btn-primary" %>
+
+  <% end %>
+  </div>

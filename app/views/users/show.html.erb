@@ -1,3 +1,8 @@
 <div class="container">
-hoge
+<%= image_tag current_user.avatar, :class => 'img img-responsive', :size => '300x250' %>
+
+
+<%= link_to '退会', cancel_user_registration_path(current_user.id) %>
 </div>
+
+

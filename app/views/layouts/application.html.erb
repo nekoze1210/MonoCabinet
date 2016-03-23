@@ -7,15 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="animated fadeIn">
-  <% unless controller.action_name == "welcome" %>
+  <% unless controller.action_name == "welcome"%>
     <%= render partial: 'common/header' %>
-    <p class="alert"><%= alert %></p>
+
   <% end %>
 
   <%= yield %>
 
 
-<% unless controller_name =="items" || controller_name == "users" %>
+<% unless controller_name =="items" || controller_name == "users" || controller_name == "locations" %>
   <%= render partial: 'common/footer'%>
 <%end%>
 

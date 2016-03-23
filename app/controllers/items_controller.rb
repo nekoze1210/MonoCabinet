@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
     @user = current_user
     @items = @user.items.includes(:user).order("created_at DESC").page(params[:page]).per(12)
   end
-
   # GET /items/1
   # GET /items/1.json
   def show
@@ -28,15 +27,13 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    @item = Item.find(params[:id])
   end
 
   # POST /items
   # POST /items.json
   def create
-
     @item = Item.create(item_params)
-
-
     # respond_to do |format|
     #   if @item.save
     #     format.html { redirect_to @item, notice: '登録されました。' }
@@ -66,6 +63,12 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    item = Item.find(params[:id])
+    locations = item.locations.where(item_id: params[:id])
+    if item.user_id == current_user.id
+      item.destroy
+      locations.destroy_all
+    end
     redirect_to controller: :items, action: :index
     # @item.destroy
     # respond_to do |format|
@@ -73,7 +76,6 @@ class ItemsController < ApplicationController
     #   format.json { head :no_content }
     # end
   end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -83,7 +85,7 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
 
-      params.require(:item).permit(:item_name, :maker, :image, locations_attributes:[:latitude, :longitude, :id]).merge(user_id: current_user.id)
+      params.require(:item).permit(:item_name, :maker, :image, locations_attributes:[:latitude, :longitude, :id, :_destroy]).merge(user_id: current_user.id)
       end
 
 end

@@ -4,6 +4,8 @@ Geocoder.configure(:language  => :ja,  :units => :km, :lookup => :google) # шинх
 reverse_geocoded_by :latitude, :longitude
 after_validation :reverse_geocode
 
-
+  validates :latitude, presence: true
+  validates :longitude, presence: true
   belongs_to :item
+
 end

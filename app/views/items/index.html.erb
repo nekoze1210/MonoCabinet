@@ -10,12 +10,11 @@
     <div class="thumbnail ">
       <% if item.image? %><a href="/users/<%=current_user.id%>/items/<%= item.id %>"><%=image_tag item.image.url, :size => "300x300"%></a>
       <%else%>
-      <a href="/users/<%=current_user.id%>/items/<%= item.id %>"><%=image_tag 'noimage.png' %>
+      <a href="/users/<%=current_user.id%>/items/<%= item.id %>"><%=image_tag 'noimage.png', :size => "300x300" %>
       <%end%>
 
       <div class="caption text-center">
         <h3><a href="/user/<%=current_user.id%>/item/<%=item.id%>">【<%= item.maker %>】<%= item.item_name %></a></h3>
-        <p><%= link_to '編集',"/users/#{current_user.id}/items/#{item.id}/edit"  %></p>
       </div>
     </div>
   </div>
