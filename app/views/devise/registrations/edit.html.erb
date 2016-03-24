@@ -1,13 +1,13 @@
 <div class="text-center">
 
-<h3>プロフィール情報の編集</h3>
+<h3>プロフィール情報の更新</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, :class => 'form-control' %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -16,29 +16,29 @@
 
   <div class="form-group">
     <%= f.label "新しいパスワード" %> <i>(変更しない場合は空白のままで結構です。)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", :class => 'form-control' %>
   </div>
 
 
 
   <div class="form-group">
     <%= f.label "新しいパスワード(確認用)" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", :class => 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= f.label "現在のパスワードを入力" %> <br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <%= f.password_field :current_password, autocomplete: "off", :class => 'form-control' %>
   </div>
 
-  <div class="btn btn-primary">
-    <%= f.submit "プロフィールを更新" %>
+  <div class="action">
+    <%= f.submit "プロフィールを更新", :class => 'btn btn-primary' %>
   </div>
 <% end %>
 
 <h3>退会する</h3>
 
-<p> <%= button_to "退会する", registration_path(resource_name), data: { confirm: "一度退会されたユーザーの情報は全て削除されます。\nよろしいですか？" }, method: :delete %></p>
+<p> <%= button_to "退会する", registration_path(resource_name), data: { confirm: "一度退会されたユーザーの情報は全て削除されます。\nよろしいですか？" }, method: :delete, :class => 'btn btn-danger' %></p>
 
 <%= link_to "Back", :back %>
 </div>
