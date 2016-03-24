@@ -1,8 +1,17 @@
 <div class="container">
-<%= image_tag current_user.avatar, :class => 'img img-responsive', :size => '300x250' %>
+<div class="col-md-8">
+<%= image_tag current_user.avatar, :class => 'img img-responsive', :size => '150x150' %>
+<%= current_user.nickname%>さん<br>
 
+<h4>ステータス:</h4>
 
-<%= link_to '退会', cancel_user_registration_path(current_user.id) %>
+<p>アイテムの登録回数:<%= current_user.items.count %>回</p>
+<p>位置情報の登録回数:<%= current_user.locations.count%></p>
+</div>
+<div class="col-md-4">
+<%= link_to '退会する', cancel_user_registration_path(current_user.id), :class =>'btn btn-warning' %><br><br>
+<%= link_to 'プロフィール編集', edit_user_registration_path(current_user.id), :class => 'btn btn-default' %>
+</div>
 </div>
 
 

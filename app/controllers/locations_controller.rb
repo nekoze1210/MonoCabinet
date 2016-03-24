@@ -26,7 +26,7 @@ class LocationsController < ApplicationController
 private
 
   def location_params
-    params.require(:location).permit(:latitude, :longitude).merge(item_id: params[:item_id])
+    params.require(:location).permit(:latitude, :longitude).merge(item_id: params[:item_id], user_id: current_user.id)
   end
 
 end

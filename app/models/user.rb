@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,:confirmable
 
   has_many :items
+  has_many :locations
 
 
   # has_attached_file :avatar,

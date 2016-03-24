@@ -6,15 +6,22 @@
     <thead>
       <tr>
         <th>住所:</th>
+        <th></th>
+        <th>更新日時:</th>
+      </tr>
+      <tr>
+
       </tr>
     </thead>
     <tbody>
       <% @locations.each do |location| %>
         <tr>
-        <td><%=location.address%><a class="text-right btn btn-danger" href="http://maps.google.co.jp/maps?q=<%=location.address%>" target="_blank">[GoogleMapで確認]</a></td>
+          <td><%=location.address%></td>
+          <td><a class="text-right btn btn-danger" href="http://maps.google.co.jp/maps?q=<%=location.address%>" target="_blank">[GoogleMapで確認]</a></td>
+          <td><%= location.created_at.strftime('%Y年%m月%d日 %H:%M') %></td>
         </tr>
-      <%end %>
+        <%end %>
     </tbody>
   </table>
-  まだ位置を登録されていない場合は<%= link_to 'コチラ', new_user_item_location_path(item_id: params[:item_id]) %>
+  <%= link_to '更新する', new_user_item_location_path(item_id: params[:item_id]), :class => 'btn btn-primary' %>
   </div>

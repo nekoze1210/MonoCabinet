@@ -17,10 +17,10 @@
 
     <p><strong>メーカー:</strong></p><hr>
     <p><%= @item.maker %></p>
-
+    <p>登録日:<br><%= @item.created_at.strftime('%m月%d日 %H:%M')%></p>
     <p>更新回数: <%=@item.locations.count %>回</p>
     <% if @item.locations.count == 0 %>
-        <strong>位置が一度も登録されていない！？なんちって♡</strong>
+        <strong><a class="fa fa-exclamination"></strong>
       <%elsif @item.locations.count >= 1%>
         <strong>良い頻度で更新されていますね!</strong>
       <%elsif @item.locations.count >= 6 %>
