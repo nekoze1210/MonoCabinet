@@ -12,6 +12,11 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     @item = current_user.items.find(params[:id])
+    # index
+    @locations = @item.locations.all.order("created_at DESC").page(params[:page]).per(3)
+    # new
+    @location = Location.new
+    @location.item_id = @item.id
   end
 
   def search
@@ -85,7 +90,7 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
 
-      params.require(:item).permit(:item_name, :maker, :image, locations_attributes:[:latitude, :longitude, :id, :_destroy]).merge(user_id: current_user.id)
+      params.require(:item).permit(:item_name, :maker, :image, locations_attributes:[:latitude, :longitude, :id]).merge(user_id: current_user.id)
       end
 
 end

@@ -21,31 +21,38 @@
         <%= b.hidden_field :longitude  %>
         <% end %>
         </div>
-          <%= f.submit "Submit", :class => "btn btn-primary" %>
+        <button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+          <%= f.submit "Submit", :class => "btn btn-primary", :id => "new_item" %>
+          </button>
       </div>
     <% end %>
   </div>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    var options = {
+  $('#myButton').on('click', function () {
+    var $btn = $(this).button('loading')
+      // document.addEventListener("DOMContentLoaded", function() {
+        var options = {
+            enableHighAccuracy: true ,
+            timeout: 10000,
+            maximumAge: 0
+        };
+        window.navigator.geolocation.getCurrentPosition(success, error, options);
+    // }, false);
 
-        timeout: 60000,
-        maximumAge: 0
-    };
-    window.navigator.geolocation.getCurrentPosition(success, error, options);
-}, false);
+      function success(pos) {
+          document.getElementById('item_locations_attributes_0_latitude').value = pos.coords.latitude;
+          document.getElementById('item_locations_attributes_0_longitude').value = pos.coords.longitude;
+          $("#new_item").submit();
+      }
 
-function success(pos) {
-  console.log("aaa")
-    console.log(pos.coords.latitude)
-    document.getElementById('item_locations_attributes_0_latitude').value = pos.coords.latitude;
-    document.getElementById('item_locations_attributes_0_longitude').value = pos.coords.longitude;
-}
+      function error(err) {
+        alert("位置情報が取得できませんでした。\n ページを更新するか、端末を変えてください。")
+          // console.warn('ERROR(' + err.code + '): ' + err.message);
+      }
+  })
 
-function error(err) {
-    console.warn('ERROR(' + err.code + '): ' + err.message);
-}
+
 </script>
 

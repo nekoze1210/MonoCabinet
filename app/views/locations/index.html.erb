@@ -1,6 +1,5 @@
-
 <div class="container">
-  <h3>ナクシタ?</h3>
+
   <h4>あなたが登録してきた位置が以下に表示されます。これらを参考にすると見つかるかもしれません。</h4>
   <table class="table">
     <thead>
@@ -24,4 +23,6 @@
     </tbody>
   </table>
   <%= link_to '更新する', new_user_item_location_path(item_id: params[:item_id]), :class => 'btn btn-primary' %>
+  <% link_to '戻る' , user_item_path(id: current_user.id, item_id: params[:item_id] ), :class => 'btn btn-default'%>
+
   </div>
