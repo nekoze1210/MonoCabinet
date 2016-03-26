@@ -1,5 +1,5 @@
 <div class="container text-center">
-<h2>サインイン</h2>
+<h3>サインイン</h3>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-group">
@@ -20,10 +20,11 @@
   <% end -%>
 
   <div>
-    <%= f.submit "Log in", :class => 'btn btn-warning' %>
+    <%= f.submit "Sign in", :class => 'btn btn-warning' %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
 
 </div>

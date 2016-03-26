@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   has_many :items
   has_many :locations
 
+  validates :nickname,
+    uniqueness: { case_sensitive: :false },
+    length: { minimum: 4, maximum: 20 }
+
 
   # has_attached_file :avatar,
   #                                     styles:  { medium: "300x300#", thumb: "100x100#" }
