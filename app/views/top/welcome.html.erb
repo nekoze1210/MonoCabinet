@@ -1,5 +1,5 @@
 <div class="text-center" style="background-color:#79D1B0;">
-  <h1 class=" animated fadeInLeftBig" style="font-family:AIRSTREAM; letter-spacing: 5px;">Otoshimonno<span style="font-size: 20px;">-オトシモンノ-</span></h1>
+  <h1 class=" animated fadeInLeftBig" style="font-family:Arial; letter-spacing: 2px;">Otoshimonno</h1>
   <p >おっちょこちょいなあなたに、忘れ物・落し物をしない習慣を付けてくれます。</p>
   <a><%= link_to '新規登録', new_user_registration_path ,  :class => 'btn btn-lg btn-primary' %></a>
   <a><%= link_to 'サインイン', new_user_session_path,  :class => 'btn btn-lg btn-warning' %></a>
@@ -64,21 +64,28 @@
       </div><!-- /.row -->
      </div>
     </div>
-<div class="content-section-a">
-  <hr align="center" width="30%">
-  <div class="sign">
-    <h3 class="text-center">まずは新規登録から！</h3>
-    <div class="text-center">
-      <%= link_to '新規登録', new_user_registration_path ,  :class => 'btn btn-lg btn-primary' %>
-      <%= link_to 'ログイン', new_user_session_path,  :class => 'btn btn-lg btn-warning' %>
+<!-- 
+  <div class="content-section-a">
+    <h2 class="text-center">Why?(なぜ作った)</h2>
+    <p>日本では、年間300万件もの落し物が発生しています。</p>
+
+    <canvas id="canvas" style="height:450px;, width: 600;"></canvas>
+
+ -->
+
+
+  </div>
+
+  <div class="content-section-a">
+    <hr align="center" width="30%">
+    <div class="sign">
+      <h3 class="text-center">まずは新規登録から！</h3>
+      <div class="text-center">
+        <%= link_to '新規登録', new_user_registration_path ,  :class => 'btn btn-lg btn-primary' %>
+        <%= link_to 'ログイン', new_user_session_path,  :class => 'btn btn-lg btn-warning' %>
+      </div>
     </div>
-  </div>
   <hr align="center" width="30%">
-  </div>
-
-
-
-
   </div>
 
 

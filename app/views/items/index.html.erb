@@ -3,15 +3,15 @@
 <div class="container">
 <div class="row-fruid">
  <%@items.each do |item| %>
-    <div class="col-md-6 col-xs-12">
-    <div class="thumbnail ">
-      <% if item.image? %><a href="/users/<%=current_user.id%>/items/<%= item.id %>"> <%=image_tag item.image.url, :size => "300x300, class => 'img img-responsive', :size => '150x150', :style => 'margin: 0 auto;'"%></a>
+    <div class="col-md-4 col-xs-12 mh">
+    <div class="thumbnail">
+      <% if item.image? %><a href="/users/<%=current_user.id%>/items/<%= item.id %>"> <%=image_tag item.image.url, :class => 'img img-responsive', :size => '300x300', :style => 'margin: 0 auto;'%></a>
       <%else%>
       <a href="/users/<%=current_user.id%>/items/<%= item.id %>"><%=image_tag 'noimage.png', :size => "300x300" %>
       <%end%>
 
       <div class="caption text-center">
-        <h3><a href="/user/<%=current_user.id%>/item/<%=item.id%>">【<%= item.maker %>】<%= item.item_name %></a></h3>
+      <h3><a href="/users/<%=current_user.id%>/items/<%=item.id%>"><%= item.item_name %></a></h3>
       </div>
     </div>
   </div>

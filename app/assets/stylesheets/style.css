@@ -6,6 +6,8 @@ Build: 1.0
 http://www.andreagalanti.it
 */
 
+/*
+
 @font-face {
   font-family: 'Lato';
   src: url('lato/lato-black.eot');
@@ -55,7 +57,7 @@ http://www.andreagalanti.it
   font-weight: normal;
   font-style: normal;
 }
-
+*/
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
 [data-icon]:before {
   font-family: 'Flat-UI-Icons';

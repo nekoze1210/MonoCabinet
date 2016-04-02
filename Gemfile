@@ -57,7 +57,7 @@ gem 'twitter-bootswatch-rails-helpers'
 gem 'gmaps4rails'
 gem 'font-awesome-rails'
 gem 'paperclip'
-
+gem 'chart-js-rails'
 
 group :production, :staging do
   gem 'rails_12factor'

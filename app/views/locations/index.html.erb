@@ -1,6 +1,7 @@
 <div class="container">
 
-  <h4>あなたが登録してきた位置が以下に表示されます。これらを参考にすると見つかるかもしれません。</h4>
+  <h4>あなたが登録してきた位置が以下に表示されます。これらを参考にすると紛失時に見つかるかもしれません。</h4>
+  <%= link_to '更新する', new_user_item_location_path(item_id: params[:item_id]), :class => 'btn btn-primary' %>
   <table class="table">
     <thead>
       <tr>
@@ -22,7 +23,6 @@
         <%end %>
     </tbody>
   </table>
-  <%= link_to '更新する', new_user_item_location_path(item_id: params[:item_id]), :class => 'btn btn-primary' %>
   <% link_to '戻る' , user_item_path(id: current_user.id, item_id: params[:item_id] ), :class => 'btn btn-default'%>
 
   </div>
