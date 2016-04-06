@@ -1,10 +1,10 @@
-<% if current_user.items == 0 %>
-<div class="container  text-center">
+
+<% if current_user.items.length == 0  %>
+  <div class="container text-center">
   <h3>まずはチュートリアルで使い方を知ろう!</h3>
   <%= link_to 'How to Otoshimonno??', help_path, :class => 'btn btn-embossed btn-primary' %>
 </div>
 <% end %>
-
 
 <div class="container">
 <div class="row-fruid">
@@ -27,4 +27,5 @@
 <div class="col-md-12 text-center">
 <%= paginate(@items) %>
   </div>
+
 
