@@ -1,3 +1,9 @@
+<% if current_user.items == 0 %>
+<div class="container  text-center">
+  <h3>まずはチュートリアルで使い方を知ろう!</h3>
+  <%= link_to 'How to Otoshimonno??', help_path, :class => 'btn btn-embossed btn-primary' %>
+</div>
+<% end %>
 
 
 <div class="container">
@@ -9,7 +15,6 @@
       <%else%>
       <a href="/users/<%=current_user.id%>/items/<%= item.id %>"><%=image_tag 'noimage.png', :size => "300x300" %>
       <%end%>
-
       <div class="caption text-center">
       <h3><a href="/users/<%=current_user.id%>/items/<%=item.id%>"><%= item.item_name %></a></h3>
       </div>

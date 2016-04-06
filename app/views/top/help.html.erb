@@ -34,6 +34,10 @@
   </div>
 
 		<hr>
-		<h4 class="text-center">以上がOtoshimonnoの機能になります！<br>1人でも多くの方が、モノを無くさない日が実現できるように是非とも活用してください</h4>
-
+		<div class="container text-center">
+		<h4>以上がOtoshimonnoの機能になります！<br>1人でも多くの方が、モノを無くさない日が実現できるように是非とも活用してください!</h4><br>
+		<% if user_signed_in? %>
+		<%= link_to 'アイテムを登録する', new_user_item_path(current_user.id), :class => "btn btn-primary"  %><br>
+		<% end %>
+		</div>
 

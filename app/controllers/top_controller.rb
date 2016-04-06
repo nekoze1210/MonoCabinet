@@ -1,5 +1,5 @@
 class TopController < ApplicationController
-before_action :move_to_items, except: [:help]
+before_action :move_to_items, except: [:help, :contact, :developer]
   def welcome
   end
 
