@@ -89,7 +89,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-
       params.require(:item).permit(:item_name, :maker, :image, locations_attributes:[:latitude, :longitude, :id]).merge(user_id: current_user.id)
       end
 

@@ -11,8 +11,8 @@
   <% unless controller.action_name == "welcome"%>
 		<%= render partial: 'common/header' %>
   <% end %>
-      <% flash.each do |name, msg| %>
-  <div class="alert alert-<%= name == "notice" ? "success" : "error" %>">
+  <% flash.each do |name, msg| %>
+    <div class="alert alert-<%= name == "notice" ? "success" : "error" %>">
     <a class="close" data-dismiss="alert">×</a> <!-- アラートダイアログに×ボタンをつける -->
     <%= msg %>
   </div>
