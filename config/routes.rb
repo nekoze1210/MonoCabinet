@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   get '/help' => 'top#help'
   get '/developer' => 'top#developer'
   get '/contact' => 'top#contact'
-  get '/aa' => 'items#aa'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
