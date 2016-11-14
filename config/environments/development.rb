@@ -44,11 +44,17 @@ Rails.application.configure do
     :address => "smtp.gmail.com",
     :port => 587,
     :domain => 'smtp.gmail.com',
-    :user_name => "daikinagaoka.apu@gmail.com", #ご自身のgmailアドレス
-    :password => "nagaoka1210", #ご自身のgmailアドレスのパスワード
+    :user_name => "daikinagaoka.apu@gmail.com",
+    :password => "nagaoka1210",
     :authentication => 'login',
   }
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+  end
 end

@@ -1,13 +1,9 @@
-
-
-
 @font-face {
   font-family: 'AIRSTREAM';
   src: font-url('AIRSTREA.TTF') format('transition-duration: time;etype');
   font-weight: normal;
   font-style: normal;
 }
-
 
 @font-face {
   font-family: 'abstract';
@@ -46,3 +42,10 @@ body {
   -webkit-overflow-scrolling: touch
 }
 
+.thumbnail img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}

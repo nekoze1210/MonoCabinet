@@ -1,0 +1,22 @@
+- if current_user.items.length == 0
+  .container.text-center
+    %h3 まずはチュートリアルで使い方を知ろう!
+    = link_to 'チュートリアルへ', help_path, :class => 'btn btn-embossed btn-primary'
+.container
+  .row-fruid
+    - @items.each do |item|
+      .col-md-3.col-xs-12.mh
+        .img-thumbnail
+          - if item.image?
+            = link_to image_tag(item.image.url, class: 'img img-responsive'), user_item_path(current_user, item.id)
+          - else
+            = link_to image_tag('noimage.png', class: 'img img-responsive'), user_item_path(item.user_id, item)
+          .caption
+            %h4.text-center= link_to item.item_name, user_item_path(@user, item.id)
+            %p.text-right
+              = item.created_at.strftime('%b %d')
+.col-md-12.text-center
+  = paginate(@items)
+
+
+

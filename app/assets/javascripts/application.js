@@ -12,10 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dropzone
+//= require minigrid/dist/minigrid.min
 //= require turbolinks
 //= require bootstrap
-//= require underscore
-//= require gmaps/google
-//= require Chart
-//= require_tree
-
+//= require_tree .

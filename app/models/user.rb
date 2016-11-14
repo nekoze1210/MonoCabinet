@@ -6,11 +6,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,:confirmable
 
   has_many :items
-  has_many :locations
 
   validates :nickname,
     uniqueness: { case_sensitive: :false },
     length: { minimum: 4, maximum: 20 }
+
 
 
   # has_attached_file :avatar,
