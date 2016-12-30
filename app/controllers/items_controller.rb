@@ -27,6 +27,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.create(item_params)
+    redirect_to user_items_path(current_user), notice: 'アイテムの情報が登録されました。'
   end
 
   def update

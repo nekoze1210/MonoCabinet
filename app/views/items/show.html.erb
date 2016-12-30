@@ -39,7 +39,7 @@
         <%= form_for @location, url: user_item_locations_path(current_user, @item) do |f| %>
           <%= f.hidden_field :latitude  %>
           <%= f.hidden_field :longitude  %>
-          <%= f.submit '位置を更新する', class: 'btn btn-lg btn-embossed btn-primary', id: 'myButton' %>
+          <%= f.submit '位置を更新する', class: 'btn btn-lg btn-embossed btn-primary', id: 'updateButton' %>
         <% end %>
       </div>
       <% @locations.each do |location| %>
@@ -57,22 +57,3 @@
     <%= link_to '削除', user_item_path, method: :delete, class: 'btn btn-danger', confirm: "登録されたアイテム、位置情報は削除されます。\n 本当によろしいですか?" %>
     <%= link_to '戻る', user_items_path,  :class => 'btn btn-default' %>
   </div>
-
-  <script>
-    $(document).ready(function () {
-      var $btn = $(this).button('loading')
-          var options = {
-              enableHighAccuracy: true ,
-              timeout: 100000,
-              maximumAge: 0
-          };
-          window.navigator.geolocation.getCurrentPosition(success, error, options);
-        function success(pos) {
-            document.getElementById('location_latitude').value = pos.coords.latitude;
-            document.getElementById('location_longitude').value = pos.coords.longitude;
-        }
-        function error(err) {
-          alert("位置情報が取得できませんでした。\n ページを更新するか、端末を変えてください。")
-        }
-    })
-  </script>

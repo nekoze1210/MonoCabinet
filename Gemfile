@@ -22,6 +22,7 @@ gem 'gmaps4rails'
 gem 'font-awesome-rails'
 gem 'paperclip'
 gem 'dropzonejs-rails', '~> 0.7.3'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'byebug'

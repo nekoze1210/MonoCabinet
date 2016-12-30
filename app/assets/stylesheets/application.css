@@ -11,9 +11,9 @@
  * file per style scope.
  *
  *= require bootstrap.min
- *= require font-awesome
  *= require dropzone/basic
  *= require dropzone/dropzone
+ *= require font-awesome
  *= require_self
  *= require_tree
  */

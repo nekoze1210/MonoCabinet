@@ -3,7 +3,8 @@ class Item < ActiveRecord::Base
 
   belongs_to :user
   has_many :locations, dependent: :destroy
+
+  validates :item_name, presence: true
+
   accepts_nested_attributes_for :locations,  allow_destroy: true, reject_if: :all_blank
-  # validates_presence_of :item_name, :maker
-  # バリデーションを掛けたいけどエラーが表示されない
 end

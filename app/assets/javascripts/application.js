@@ -11,11 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require dropzone
 //= require minigrid/dist/minigrid.min
 //= require turbolinks
 //= require bootstrap
-//= require underscore
 //= require gmaps/google
 //= require_tree

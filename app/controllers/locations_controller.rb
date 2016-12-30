@@ -5,6 +5,7 @@ class LocationsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @location = Location.create(location_params)
     redirect_to user_item_path(@location.item.user, @location.item), notice: '位置を更新しました'
   end
@@ -19,7 +20,8 @@ class LocationsController < ApplicationController
   def destroy
   end
 
-  private
+private
+
   def set_user
     @user = current_user
   end

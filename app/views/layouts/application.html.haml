@@ -14,7 +14,7 @@
     = yield
     - unless controller_name =='items' || controller_name == 'users' || controller_name == 'locations'
       = render partial: 'common/footer'
-  :javascript
-    $(function(){
-      $('.mh').matchHeight();
-    });
+  -# :javascript
+  -#   $(function(){
+  -#     $('.mh').matchHeight();
+  -#   });

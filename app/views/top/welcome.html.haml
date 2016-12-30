@@ -1,15 +1,13 @@
 .text-center{:style => "background-color:#79D1B0;"}
-  %h1.animated.fadeInLeftBig{:style => "font-family:Arial; letter-spacing: 2px;"} Otoshimonno
+  %h1.animated.fadeInLeftBig{:style => "letter-spacing: 2px;"} Otoshimonno
   %p おっちょこちょいなあなたに、忘れ物・落し物をしない習慣を付けてくれます。
   %a= link_to '新規登録', new_user_registration_path ,  :class => 'btn btn-lg btn-primary'
   %a= link_to 'サインイン', new_user_session_path,  :class => 'btn btn-lg btn-warning'
 #carousel-example-generic.carousel.slide.cal2{"data-ride" => "carousel"}
-  / Indicators
   %ol.carousel-indicators
     %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
     %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
     %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
-  / Wrapper for slides
   .carousel-inner{:role => "listbox"}
     .item.active
       = image_tag ("carousel1.jpg")
@@ -43,20 +41,10 @@
           PC・スマートフォンから見やすく、
           %br>/
           そして簡単に操作できます。
-      / /.col-lg-4
       .col-sm-6.wow.fadeInDown.text-center
         = image_tag 'icon/map.svg', :class => 'rotate' ,:alt => 'alt="Generic placeholder image'
         %h3 Geolocation
         %p.lead お使いの端末から位置情報を取得します。いざ紛失した時でも保存した位置情報から辿って物を見つけることができるかもしれません。
-        / <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p>
-      / /.col-lg-4
-    / /.row
-/
-  <div class="content-section-a">
-  <h2 class="text-center">Why?(なぜ作った)</h2>
-  <p>日本では、年間300万件もの落し物が発生しています。</p>
-  
-  <canvas id="canvas" style="height:450px;, width: 600;"></canvas>
 .content-section-a
   %hr{:align => "center", :width => "30%"}/
   .sign
