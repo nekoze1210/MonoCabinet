@@ -34,11 +34,10 @@
     var $btn = $(this).button('loading')
         var options = {
             enableHighAccuracy: true ,
-            timeout: 10000,
+            timeout: 100000,
             maximumAge: 0
         };
         window.navigator.geolocation.getCurrentPosition(success, error, options);
-    // }, false);
       function success(pos) {
           document.getElementById('item_locations_attributes_0_latitude').value = pos.coords.latitude;
           document.getElementById('item_locations_attributes_0_longitude').value = pos.coords.longitude;
@@ -46,7 +45,6 @@
       }
       function error(err) {
         alert("位置情報が取得できませんでした。\n ページを更新するか、端末を変えてください。")
-          // console.warn('ERROR(' + err.code + '): ' + err.message);
       }
   })
 
