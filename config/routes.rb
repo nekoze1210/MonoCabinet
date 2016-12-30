@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :users, only: [:show]  do
+  resources :users, only: [:show, :edit, :update]  do
     resources :items do
       resources :locations
     end
   end
+
   root 'top#welcome'
+  resources :top
+
   get '/help' => 'top#help'
   get '/developer' => 'top#developer'
   get '/contact' => 'top#contact'
-  get '/delete' => 'items#deleted'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,17 +1,16 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:index, :show, :new]
 
   def index
-    @user = current_user
-    @items = @user.items.includes(:user).order("created_at DESC").page(params[:page]).per(12)
+    @items = @user.items.order("created_at DESC").page(params[:page]).per(12)
   end
 
   def show
     @item = current_user.items.find(params[:id])
-    @locations = @item.locations.all.order("created_at DESC")
+    @locations = @item.locations.includes(params[:item_id]).order("created_at DESC")
     @location = @item.locations.new
-    @location.item_id = @item.id
   end
 
   def search
@@ -19,13 +18,11 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
     @item = Item.new
     @item.locations.build
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def create
@@ -33,26 +30,42 @@ class ItemsController < ApplicationController
   end
 
   def update
-    redirect_to controller: :items, action: :show
+    if @item.update
+      redirect_to controller: :items, action: :show
+      notice[:success] = "アイテムの情報が更新されました!"
+    else
+      render :edit
+    end
   end
 
   def destroy
-    item = Item.find(params[:id])
-    locations = item.locations.where(item_id: params[:id])
-    if item.user_id == current_user.id
-      item.destroy
+    locations = @item.locations.where(item_id: params[:id])
+    if @item.user_id == current_user.id
+      @item.destroy
       locations.destroy_all
     end
     redirect_to controller: :items, action: :index
   end
 
-private
+  private
 
   def set_item
     @item = Item.find(params[:id])
   end
 
+  def set_user
+    @user = User.find(current_user)
+  end
+
   def item_params
-    params.require(:item).permit(:item_name, :maker, :image, locations_attributes:[:latitude, :longitude, :id, :user_id]).merge(user_id: current_user.id)
+    params.require(:item)
+    .permit(
+      :item_name,
+      :maker,
+      :image,
+      locations_attributes:
+        [:latitude,
+         :longitude,
+         :user_id]).merge(user_id: current_user.id)
   end
 end

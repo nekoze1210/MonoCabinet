@@ -1,0 +1,9 @@
+.container
+  .col-md-6.col-xs-12
+    %h4.title Input
+    = render partial: 'form'
+  .col-md-6.col-xs-12
+    %h4 Card Preview
+    .cards{:style => "border:2px solid;"}
+      .card.preview
+        #name-preview
