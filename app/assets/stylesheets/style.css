@@ -533,11 +533,10 @@ a.thumbnail.active {
   color: #34495e;
 }
 .btn {
-
   font-size: 15px;
   font-weight: normal;
   line-height: 1.4;
-  border-radius: 4px;
+  /*border-radius: 4px;*/
   padding: 10px 15px;
   -webkit-font-smoothing: subpixel-antialiased;
   -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
@@ -874,7 +873,7 @@ fieldset[disabled] .btn-link:focus {
   padding: 10px 19px;
   font-size: 17px;
   line-height: 1.471;
-  border-radius: 6px;
+  /*border-radius: 6px;*/
 }
 .btn-sm {
   padding: 9px 13px;
@@ -4451,12 +4450,6 @@ body.vjs-full-window {
   .login {
     background-image: url(../images/login/imac-2x.png);
   }
-}
-footer {
-  background-color: #edeff1;
-  color: #bac1c8;
-  font-size: 15px;
-  padding: 0;
 }
 footer a {
   color: #9aa4af;
