@@ -68,3 +68,12 @@ footer {
     }
   }
 }
+
+.alert.alert-success{
+  background-color: #F1C40F;
+  border: none;
+  border-radius: 0;
+  a.close {
+    font-size: 30px;
+  }
+}
