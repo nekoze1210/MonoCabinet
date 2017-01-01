@@ -1,4 +1,4 @@
-%nav.navbar-default.stuckMenu.isStuck{:role => "navigation"}
+%nav.navbar-default.mono-navbar
   .container-fluid
     .navbar-header
       - if user_signed_in?
@@ -12,5 +12,5 @@
           %li.divider
           %li= link_to 'プロフィールの変更', edit_user_path(current_user)
           %li= link_to 'サインアウト', destroy_user_session_path, method: :delete
-      = link_to 'Otoshimonno', root_path, class: 'navbar-brand', style: 'border-left: 2px solid #cccccc'
-      = link_to content_tag(:i, nil, class: 'fa fa-search', id: '#js-search-items'), root_path, class: 'navbar-brand'if user_signed_in?
+      = link_to 'Otoshimonno', root_path, class: 'navbar-brand'
+      = link_to content_tag(:i, nil, class: 'fa fa-search', id: '#js-search-items'), '', class: 'navbar-brand', data: { toggle: 'modal', target: '#search-modal' } if controller.controller_name == 'items' && action_name == 'index'

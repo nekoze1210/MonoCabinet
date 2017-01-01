@@ -1,25 +1,19 @@
+nav.navbar-default.mono-navbar{
+  background: #34495e;
+  a.navbar-brand {
+    color: #fff;
+    span.caret {
+      border-top-color: #fff;
+      border-bottom-color: #fff;
+      padding: 0;
+    }
+  }
+}
+
 .navbar-brand{
   font-family: 'Space Mono';
   font-size: 30px;
   color:#95A5A6;
-}
-
-.item{
-  width: 100%;
-}
-
-.cal2{
-  padding: 0;
-}
-
-h1{
-  margin: 0;
-}
-
-.shadow {
-    margin-top: 5px; /* 画像の上の余白*/
-    display: inline-block;
-    box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.8);
 }
 
 body {
@@ -48,12 +42,29 @@ footer {
 }
 
 .btn-push {
-  z-index: 3;
   width: 100%;
   background-color: #8DC63F;
-  color: #ffffff;
+  color: #fff;
   border-radius: 0;
 }
 
-.pagination {
+.mono-content{
+  overflow: hidden;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  h3, p, a {
+    font-family: 'Noto Sans Japanese';
+    font-weight: 200;
+  }
+  .thumbnail{
+    border-radius: 0;
+    padding: 0;
+    img {
+      display: block;
+      min-width: 100%;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }

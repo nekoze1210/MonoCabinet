@@ -7,14 +7,23 @@ http://www.andreagalanti.it
 */
 
 /*General */
-@import url("https://fonts.googleapis.com/css?family=Space+Mono");
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
 
 body, html, h1, h2, h3, h4, h5, p, a {
 	/*height: 100%;
 	width: 100%;*/
 	/*overflow-x:hidden;*/
-	font-family: 'Space Mono';
+	font-family: 'Space Mono', 'Noto Sans Japanese', sans-serif;
 }
+
+.noto100 {font-weight:100;}
+.noto300 {font-weight:300;}
+.noto400 {font-weight:400;}
+.noto500 {font-weight:500;}
+.noto700 {font-weight:700;}
+.noto900 {font-weight:900;}
 
 ::-moz-selection{background:#1abc9c;color:white}
 

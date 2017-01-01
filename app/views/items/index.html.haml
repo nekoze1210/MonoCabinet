@@ -3,18 +3,7 @@
     %h3 まだアイテムが登録されていません。
     = link_to 'アイテムの登録方法', help_path, :class => 'btn btn-embossed btn-primary'
 .container
-  - @items.each do |item|
-    .col-md-6.col-xs-12.mh
-      .img-thumbnail
-        - if item.image?
-          = link_to image_tag(item.image.url, class: 'img img-responsive'), user_item_path(current_user, item.id)
-        - else
-          = link_to image_tag('noimage.png', class: 'img img-responsive'), user_item_path(item.user_id, item)
-        .caption
-          %h3.text-left= link_to item.item_name, user_item_path(@user, item.id)
-          %p.text-right
-            = item.created_at.strftime('%b %d %H:%M')
-  .col-md-12.text-center{ style: 'padding-bottom: 30px;' }
-    = paginate(@items)
+  = render @items
+%div{ style: 'padding-bottom: 60px;' }
 %footer.text-center
   = link_to 'アイテムを登録する', new_user_item_path, class: 'btn btn-lg btn-push'

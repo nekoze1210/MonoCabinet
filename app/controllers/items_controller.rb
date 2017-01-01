@@ -1,20 +1,19 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:index, :show, :new]
+  before_action :set_search_q, only: [:index, :search]
 
   def index
-    @items = @user.items.order("created_at DESC").page(params[:page]).per(12)
+    @items = current_user.items.order("created_at DESC").page(params[:page]).per(12)
   end
 
   def show
-    @item = current_user.items.find(params[:id])
     @locations = @item.locations.includes(params[:item_id]).order("created_at DESC")
     @location = @item.locations.new
   end
 
   def search
-    @items = Item.where('item_name LIKE(?)', "%#{params[:keyword]}").limit(20)
+    @items = Item.search(params[:q]).result
   end
 
   def new
@@ -26,8 +25,14 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params)
-    redirect_to user_items_path(current_user), notice: 'アイテムの情報が登録されました。'
+    item = Item.new(item_params)
+    item.remote_image_url = SearchRakutenItemService.new(item.item_name).find_thumbnail if item.image.blank? && params[:use_rakuten]
+    if item.save
+      redirect_to user_items_path(current_user), notice: 'アイテムの情報が登録されました。'
+    else
+      flash[:alert] = 'Error!: アイテムの情報が登録されませんでした。'
+      render :new
+    end
   end
 
   def update
@@ -48,14 +53,14 @@ class ItemsController < ApplicationController
     redirect_to controller: :items, action: :index
   end
 
-  private
+private
 
   def set_item
     @item = Item.find(params[:id])
   end
 
-  def set_user
-    @user = User.find(current_user)
+  def set_search_q
+    @q = current_user.items.search
   end
 
   def item_params
