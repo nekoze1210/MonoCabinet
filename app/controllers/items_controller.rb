@@ -5,16 +5,11 @@ class ItemsController < ApplicationController
 
   def index
     @items = current_user.items.order("created_at DESC").page(params[:page]).per(12)
-    flash[:notice] ="test"
   end
 
   def show
     @locations = @item.locations.includes(params[:item_id]).order("created_at DESC")
     @location = @item.locations.new
-  end
-
-  def search
-    @items = Item.search(params[:q]).result
   end
 
   def new
@@ -52,6 +47,16 @@ class ItemsController < ApplicationController
       locations.destroy_all
     end
     redirect_to controller: :items, action: :index
+  end
+
+  def search
+    @items = Item.search(params[:q]).result
+  end
+
+  def lost
+    @item = current_user.items.find(params[:id])
+    TweetPostedItemService.new.post_to_twitter(@item.item_name, @item.image.url)
+    redirect_to root_path, notice: 'ok?'
   end
 
 private
