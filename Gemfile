@@ -25,6 +25,8 @@ gem 'dropzonejs-rails', '~> 0.7.3'
 gem 'jquery-turbolinks'
 gem 'ransack'
 gem 'rakuten_web_service'
+gem 'twitter'
+gem 'config'
 
 group :development, :test do
   gem 'byebug'
