@@ -5,12 +5,13 @@ Rails.application.routes.draw do
       resources :locations
       collection do
         get 'search'
+        post  'lost'
       end
     end
   end
   resources :rakuten_items do
     collection do
-      get 'search'
+      get   'search'
     end
   end
 

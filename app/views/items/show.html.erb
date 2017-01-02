@@ -1,9 +1,9 @@
 <div class="col-md-12" style="padding-top: 20px;">
   <div class="col-md-6 col-xs-12 text-center" >
     <% if @item.image? %>
-      <%= image_tag @item.image.url, :size => "250x250", :class => 'img img-responsive', :style => 'margin: 0 auto' %>
+      <%= image_tag @item.image.url, class: 'img img-responsive' %>
     <% else %>
-      <%=image_tag 'noimage.png', :size => "250x250" %>
+      <%= image_tag 'noimage.png', class: 'img img-responsive'%>
     <%end%>
   </div>
 
@@ -55,7 +55,8 @@
 
   <div class="col-md-12 col-xs-12">
     <%= link_to '削除', user_item_path, method: :delete, class: 'btn btn-danger', confirm: "登録されたアイテム、位置情報は削除されます。\n 本当によろしいですか?" %>
-    <%= link_to '戻る', user_items_path,  :class => 'btn btn-default' %>
+    <%= link_to '戻る', user_items_path, class: 'btn btn-default' %>
+    <%= link_to 'ツイートする', lost_user_items_path(user_id: current_user, id: @item), method: :post, class: 'btn btn-warning' %>
   </div>
 
 <script>
