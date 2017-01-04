@@ -15,7 +15,7 @@ Config.setup do |config|
   # config.env_prefix = 'Settings'
   config.use_env = true
   config.env_prefix = 'Settings'
-  config.env_separator = '__'
+  config.env_separator = '.'
   config.env_converter = :downcase
   config.env_parse_values = true
   # What string to use as level separator for settings loaded from ENV variables. Default value of '.' works well
