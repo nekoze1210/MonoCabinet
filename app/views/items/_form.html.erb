@@ -3,7 +3,7 @@
   <div>
     <div class="form-group">
       <%= f.label 'アイテム名' %><br>
-      <%= f.text_field :item_name, class: 'form-control', maxlength: '19' %>
+      <%= f.text_field :item_name, class: 'form-control', maxlength: '20' %>
     </div>
     <div class="form-group">
       <%= f.label 'メーカー' %><br>
@@ -13,34 +13,14 @@
       <%= f.label 'イメージ' %><br>
       <%= f.file_field :image %>
       <%= check_box_tag 'use_rakuten' %>
-      <%= f.label '画像を自動取得する' %><small> *Powered_by rakuten-api</small>
+      <%= f.label '画像を自動取得する' %><small> *Powered_by Rakuten</small>
     </div>
       <%= f.fields_for :locations do |b| %>
       <%= b.hidden_field :latitude  %>
       <%= b.hidden_field :longitude  %>
     <% end %>
-    <%= f.submit "Submit", class: "btn btn-primary", id: "new_item", data: { 'loading-text' => "Loading..." } %>
+    <%= f.submit "Submit", class: "btn btn-primary", id: "new_item_submit", data: { 'loading-text' => "位置情報を取得中" } %>
   </div>
     <% end %>
   </div>
 </div>
-
-<script>
-$('#myButton').on('click', function () {
-  var $btn = $(this).button('loading')
-      var options = {
-          enableHighAccuracy: true ,
-          timeout: 100000,
-          maximumAge: 0
-      };
-      window.navigator.geolocation.getCurrentPosition(success, error, options);
-    function success(pos) {
-        document.getElementById('item_locations_attributes_0_latitude').value = pos.coords.latitude;
-        document.getElementById('item_locations_attributes_0_longitude').value = pos.coords.longitude;
-        $("#new_item").submit();
-    }
-    function error(err) {
-      alert("位置情報が取得できませんでした。\n ページを更新するか、端末を変えてください。")
-    }
-});
-</script>
