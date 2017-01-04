@@ -53,7 +53,7 @@ footer {
   padding-top: 50px;
   padding-bottom: 30px;
   h3, p, a {
-    font-family: 'Noto Sans Japanese';
+    font-family: 'Noto Sans Japanese', 'Space Mono';
     font-weight: 200;
   }
   .thumbnail{
@@ -70,7 +70,7 @@ footer {
 }
 
 .alert.alert-success{
-  background-color: #F1C40F;
+  background-color: rgba(241,196,15,0.9);
   border: none;
   border-radius: 0;
   a.close {
