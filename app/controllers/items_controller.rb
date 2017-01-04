@@ -4,12 +4,19 @@ class ItemsController < ApplicationController
   before_action :set_search_q, only: [:index, :search]
 
   def index
-    @items = current_user.items.order("created_at DESC").page(params[:page]).per(12)
+    @items = current_user.items.order("created_at DESC")
   end
 
   def show
     @locations = @item.locations.includes(params[:item_id]).order("created_at DESC")
     @location = @item.locations.new
+    @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
+      marker.lat location.latitude
+      marker.lng location.longitude
+      marker.infowindow location.created_at.strftime('%-m月%-d日 %H時%M分') + "に登録 (#{location.address})"
+      marker.json({ address: location.address })
+    end
+    @polylines = @hash.map{ |e| e.except(:infowindow, :address) }
   end
 
   def new

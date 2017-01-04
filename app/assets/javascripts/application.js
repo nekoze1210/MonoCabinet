@@ -14,7 +14,6 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require dropzone
-//= require minigrid/dist/minigrid.min
 //= require turbolinks
 //= require bootstrap
 //= require gmaps/google
