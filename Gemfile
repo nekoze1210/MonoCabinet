@@ -29,6 +29,7 @@ gem 'config'
 gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 
 group :development, :test do
   gem 'byebug'
