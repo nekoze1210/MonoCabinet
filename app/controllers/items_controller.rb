@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
       marker.lng location.longitude
       marker.infowindow location.created_at.strftime('%-m月%-d日 %H時%M分') + "に登録 (#{location.address})"
       marker.json({ address: location.address })
+      # marker.picture({ url: view_context.image_path('logo.png'), width: 32, height: 32 })
     end
     @polylines = @hash.map{ |e| e.except(:infowindow, :address) }
   end
@@ -60,7 +61,7 @@ class ItemsController < ApplicationController
     @items = Item.search(params[:q]).result
   end
 
-  def lost
+  def tweet
     @item = current_user.items.find(params[:id])
     TweetPostedItemService.new.post_to_twitter(@item.item_name, @item.image.url)
     redirect_to root_path, notice: 'ok?'

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :locations
       collection do
         get 'search'
-        post  'lost'
+        post 'tweet'
       end
     end
   end
