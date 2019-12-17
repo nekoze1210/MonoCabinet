@@ -14,7 +14,7 @@ gem 'sdoc', group: :doc
 gem 'devise'
 gem 'geocoder'
 gem 'carrierwave'
-gem 'fog'
+gem 'fog-aws'
 gem 'kaminari'
 gem 'bootstrap-sass-rails'
 gem 'twitter-bootswatch-rails-helpers'
