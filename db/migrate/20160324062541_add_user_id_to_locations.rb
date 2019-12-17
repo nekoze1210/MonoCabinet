@@ -1,4 +1,4 @@
-class AddUserIdToLocations < ActiveRecord::Migration
+class AddUserIdToLocations < ActiveRecord::Migration[4.2]
   def change
   	add_column :locations, :user_id, :integer
   end
