@@ -1,27 +1,27 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-gem 'mysql2', '0.3.18'
-gem 'sass-rails', '~> 5.0'
+gem 'rails', '6.0.2'
+gem 'mysql2'
+gem 'sassc-rails', '>= 2.1.0'
 gem 'haml-rails'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'jbuilder'
+gem 'sdoc', group: :doc
 gem 'devise'
 gem 'geocoder'
 gem 'carrierwave'
-gem 'fog'
+gem 'fog-aws'
 gem 'kaminari'
-gem 'bootstrap-sass-rails'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'twitter-bootswatch-rails-helpers'
 gem 'gmaps4rails'
 gem 'font-awesome-rails'
 gem 'paperclip'
-gem 'dropzonejs-rails', '~> 0.7.3'
+gem 'dropzonejs-rails'
 gem 'jquery-turbolinks'
 gem 'ransack'
 gem 'rakuten_web_service'
@@ -37,7 +37,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
   gem 'spring'
   gem 'bullet'
 end

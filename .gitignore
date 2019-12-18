@@ -19,3 +19,4 @@ config/environments/*.local.yml
 development.yml
 production.yml
 test.yml
+.idea/
