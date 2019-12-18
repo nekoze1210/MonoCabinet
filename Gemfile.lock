@@ -64,14 +64,13 @@ GEM
       zeitwerk (~> 2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    autoprefixer-rails (9.7.3)
+      execjs
     bcrypt (3.1.13)
     bindex (0.8.1)
-    bootstrap-sass (3.1.0.2)
-      sass (~> 3.2)
-    bootstrap-sass-rails (3.1.0.0)
-      bootstrap-sass (~> 3.1.0.0)
-      railties (>= 3.2.0)
-      sass-rails (>= 3.2.0)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
     buftok (0.2.0)
     builder (3.2.4)
     bullet (6.0.2)
@@ -322,9 +321,6 @@ GEM
       activesupport (>= 5.0)
       i18n
       polyamorous (= 2.3.0)
-    rb-fsevent (0.10.3)
-    rb-inotify (0.10.0)
-      ffi (~> 1.0)
     rdoc (6.2.0)
     ref (2.0.0)
     responders (3.0.0)
@@ -334,13 +330,6 @@ GEM
       ffi (~> 1.9)
     ruby_parser (3.14.1)
       sexp_processor (~> 4.9)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.2.1)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -414,7 +403,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass-rails
+  bootstrap-sass (~> 3.4.1)
   bullet
   byebug
   carrierwave
@@ -442,7 +431,7 @@ DEPENDENCIES
   rails_12factor
   rakuten_web_service
   ransack
-  sass-rails
+  sassc-rails (>= 2.1.0)
   sdoc
   spring
   therubyracer
