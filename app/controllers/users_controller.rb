@@ -2,23 +2,31 @@
 
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, only: %i[show edit update]
 
-  def show
-    @items = current_user.items
-  end
+  def show; end
 
-  def edit
-    @user = current_user
-  end
+  def edit; end
 
   def update
-    current_user.update(user_params)
+    @user.update(user_params)
+
     redirect_to root_path, notice: 'ユーザー情報が更新されました。'
   end
 
   private
 
+  def set_user
+    @user = current_user
+  end
+
   def user_params
-    params.require(:user).permit(:email, :nickname, :password, :password_confirmation, :avatar)
+    params.require(:user).permit(
+      :email,
+      :nickname,
+      :avatar,
+      :password,
+      :password_confirmation
+    ).to_h
   end
 end
