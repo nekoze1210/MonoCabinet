@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-  	@items = current_user.items
+    @items = current_user.items
   end
 
   def edit
@@ -15,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:email, :nickname, :password, :password_confirmation, :avatar)
   end
