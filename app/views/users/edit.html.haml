@@ -14,10 +14,6 @@
       = f.label 'プロフィール画像'
       %br/
       = f.file_field :avatar
-    .form-group
-      = f.label "現在のパスワード"
-      %br/
-      = f.password_field :current_password, autocomplete: "off", class: 'form-control'
     %a.btn.btn-default{ "aria-controls" => "collapse", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#passCollapse", :role => "button", :style => "margin-bottom: 10px;" }  パスワードの変更
     #passCollapse.collapse
       .form-group
