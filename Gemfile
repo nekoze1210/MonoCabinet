@@ -40,7 +40,7 @@ group :development do
   gem 'web-console'
   gem 'spring'
   gem 'bullet'
-  gem 'rubocop'
+  gem 'rubocop-rails'
 end
 
 group :production, :staging do
