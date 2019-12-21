@@ -24,6 +24,13 @@ Documentation:
 AndOr:
   Enabled: false
 
+Metrics/LineLength:
+  Max: 160
+  Exclude:
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'spec/**/*'
+
 AllCops:
   Exclude:
     - db/schema.rb

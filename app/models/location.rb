@@ -1,4 +1,4 @@
-class Location < ActiveRecord::Base
+class Location < ApplicationRecord
   require 'geocoder'
   Geocoder.configure(:language  => :ja,  :units => :km, :lookup => :google) # 設定
   reverse_geocoded_by :latitude, :longitude

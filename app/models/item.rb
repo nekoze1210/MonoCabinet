@@ -1,10 +1,13 @@
-class Item < ActiveRecord::Base
-  mount_uploader :image, ImageUploader
+# frozen_string_literal: true
+
+class Item < ApplicationRecord
+  has_one_attached :image
+
+  has_many :locations, dependent: :destroy
 
   belongs_to :user
-  has_many :locations, dependent: :destroy
 
   validates :item_name, presence: true
 
-  accepts_nested_attributes_for :locations,  allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :all_blank
 end
