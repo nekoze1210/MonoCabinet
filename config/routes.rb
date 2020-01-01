@@ -17,7 +17,4 @@ Rails.application.routes.draw do
 
   root 'top#welcome'
   resources :top
-  get '/help' => 'top#help'
-  get '/developer' => 'top#developer'
-  get '/contact' => 'top#contact'
 end

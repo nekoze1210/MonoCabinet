@@ -14,7 +14,6 @@
     #wrapper
       - unless controller.action_name == "welcome"
         = render partial: 'common/header'
-        = render partial: 'common/search_modal'
       = render partial: 'common/flash'
       = yield
       - unless controller_name =='items' || controller_name == 'users' || controller_name == 'locations'

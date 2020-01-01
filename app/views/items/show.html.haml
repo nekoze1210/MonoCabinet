@@ -48,7 +48,6 @@
   .col-md-12.col-xs-12{style: 'padding-top: 20px;'}
     = link_to '削除', user_item_path, method: :delete, class: 'btn btn-danger', confirm: "登録されたアイテム、位置情報は削除されます。\n 本当によろしいですか?"
     = link_to '戻る', user_items_path, class: 'btn btn-default'
-    = link_to 'ツイートする', tweet_user_items_path(user_id: current_user, id: @item), method: :post, class: 'btn btn-warning'
 
 :javascript
   handler = Gmaps.build('Google');
