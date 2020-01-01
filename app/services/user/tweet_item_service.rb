@@ -1,4 +1,4 @@
-class TweetPostedItemService
+class User::TweetItemService
   def initialize
     @client = Twitter::REST::Client.new do |config|
       if Rails.env == 'production'
@@ -15,15 +15,12 @@ class TweetPostedItemService
     end
   end
 
-  def post_to_twitter(text, image)
-    message = <<-MSG
+  def post_to_twitter(item, image)
+    tweet = <<-MSG
     MonoCabinet で #{item} を失くさないように管理しています。
-    #MonoCabinet'
-    #{}
+    http://localhost:3000 #MonoCabinet
     MSG
-    link_to_monocabi = 'https://localhost:3000'
     media = open(image)
-    tweet_text = message1 + "「#{text}」" + message2 + kaigyo + message3 + space + hash_tag + kaigyo + link_to_monocabi
-    @client.update_with_media(tweet_text, media)
+    @client.update_with_media(tweet, media)
   end
 end

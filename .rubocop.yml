@@ -1,0 +1,25 @@
+inherit_from: rubocop_todo.yml
+
+# 日本語でのコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/Documentation:
+  Enabled: false
+
+# 「and」「or」の使用を許可
+Style/AndOr:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - config/unicorn.rb
+    - config/unicorn_staging.rb
+    - tmp/**/*
