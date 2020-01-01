@@ -41,7 +41,7 @@
           %tr
             %td= location.address
             %td
-              %a.text-right.btn.btn-danger{:href => "http://maps.google.co.jp/maps?q=#{location.address}", :target => "_blank"} [GoogleMapで確認]
+              %a.text-right.btn.btn-danger{:href => "http://maps.google.co.jp/maps?q=#{location.address}", target: "_blank"} [GoogleMapで確認]
             %td= location.created_at.strftime('%Y年%m月%d日 %H:%M')
   .col-md-12.col-xs-12
     #map{:style => "width: 100%; height: 250px;"}
