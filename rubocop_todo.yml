@@ -1,20 +1,23 @@
-BlockNesting:
-  Max: 5
-
-ClassLength:
+Lint/SuppressedException:
   Enabled: false
 
-CyclomaticComplexity:
+Layout/LineLength:
   Enabled: false
 
-HandleExceptions:
+Metrics/ClassLength:
   Enabled: false
 
-LineLength:
+Metrics/PerceivedComplexity:
   Enabled: false
 
-MethodLength:
+Metrics/MethodLength:
   Enabled: false
 
-ParameterLists:
+Metrics/ParameterLists:
   Max: 6
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/BlockNesting:
+  Max: 5
