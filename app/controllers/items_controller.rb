@@ -90,6 +90,6 @@ class ItemsController < ApplicationController
               %i[latitude
                  longitude
                  user_id]
-          ).merge(user_id: current_user.id)
+          ).merge(user_id: current_user.id).to_h
   end
 end

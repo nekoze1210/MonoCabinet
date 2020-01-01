@@ -1,8 +1,8 @@
 .container
   .col-md-12{:style => "padding-top: 20px;"}
     #image-container.col-md-6.col-xs-12.text-center
-      - if @item.image?
-        = image_tag @item.image.url, class: 'img img-responsive'
+      - if @item.image.present?
+        = image_tag @item.image, class: 'img img-responsive'
       - else
         = image_tag 'noimage.png', class: 'img img-responsive'
     .col-md-6.col-xs-12{:style => "border:2px solid #bdc3c7; border-radius:10px; "}
