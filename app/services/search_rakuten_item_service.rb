@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SearchRakutenItemService
   def initialize(name)
     @item_name = name
