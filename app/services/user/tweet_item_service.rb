@@ -16,12 +16,11 @@ class TweetPostedItemService
   end
 
   def post_to_twitter(text, image)
-    message1 = 'モノキャビで'
-    message2 = 'を管理しているよ！'
-    message3 = 'みんなでモノを管理しよう！！'
-    kaigyo = "\n"
-    space = ' '
-    hash_tag = '#モノキャビ'
+    message = <<-MSG
+    MonoCabinet で #{item} を失くさないように管理しています。
+    #MonoCabinet'
+    #{}
+    MSG
     link_to_monocabi = 'https://localhost:3000'
     media = open(image)
     tweet_text = message1 + "「#{text}」" + message2 + kaigyo + message3 + space + hash_tag + kaigyo + link_to_monocabi

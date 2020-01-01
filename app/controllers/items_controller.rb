@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
-    item.remote_image_url = SearchRakutenItemService.new(item.item_name).find_thumbnail if item.image.blank? && params[:use_rakuten]
+    item.remote_image_url = SearchRakutenItemService.new(item.name).find_thumbnail if item.image.blank? && params[:use_rakuten]
     if item.save
       redirect_to user_items_path(current_user), notice: 'アイテムの情報が登録されました。'
     else
@@ -63,7 +63,7 @@ class ItemsController < ApplicationController
 
   def tweet
     @item = current_user.items.find(params[:id])
-    TweetPostedItemService.new.post_to_twitter(@item.item_name, @item.image.url)
+    User::TweetItemService.new.post_to_twitter(@item.name, @item.image.url)
     redirect_to root_path, notice: 'ok?'
   end
 
@@ -80,7 +80,7 @@ private
   def item_params
     params.require(:item)
     .permit(
-      :item_name,
+      :name,
       :maker,
       :image,
       locations_attributes:

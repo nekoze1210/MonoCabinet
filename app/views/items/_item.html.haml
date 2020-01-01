@@ -5,6 +5,6 @@
     - else
       = link_to image_tag('noimage.png', class: 'img img-responsive'), user_item_path(item.user_id, item), data: { turbolinks: false }
     .caption
-      %h3.text-left= link_to item.item_name, user_item_path(current_user, item.id), data: { turbolinks: false }
+      %h3.text-left= link_to item.name, user_item_path(current_user, item.id), data: { turbolinks: false }
       %p.text-right
         = item.created_at.strftime('%b %d %H:%M')
