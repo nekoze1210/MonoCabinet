@@ -2,7 +2,7 @@
   .container-fluid
     .navbar-header
       - if user_signed_in?
-        %a.navbar-brand.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+        %a.navbar-brand.dropdown-toggle{ 'aria-expanded': 'false', 'data-toggle': 'dropdown', href: '#', role: 'button' }
           = image_tag current_user.avatar, class: 'img img-circle', size: '30x30'
           %span.caret
         %ul.dropdown-menu
