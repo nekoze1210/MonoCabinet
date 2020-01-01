@@ -1,18 +1,17 @@
+# frozen_string_literal: true
+
 class TopController < ApplicationController
-before_action :move_to_items, only: [:welcome]
-  def welcome
-  end
+  before_action :move_to_items, only: [:welcome]
+  def welcome; end
 
-  def help
-  end
+  def help; end
 
-  def developer
-  end
+  def developer; end
 
-  def contact
-  end
+  def contact; end
 
-private
+  private
+
   def move_to_items
     redirect_to user_items_path(current_user) if user_signed_in?
   end

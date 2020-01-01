@@ -1,23 +1,19 @@
+# frozen_string_literal: true
+
 class ItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_search_q, only: [:index, :search]
+  before_action :set_item, only: %i[show edit update destroy]
+  before_action :set_search_q, only: %i[index search]
 
   def index
-    @items = current_user.items.order("created_at DESC")
+    @items = current_user.items.order('created_at DESC')
   end
 
   def show
-    @locations = @item.locations.includes(params[:item_id]).order("created_at DESC")
+    @locations = @item.locations.includes(params[:item_id]).order('created_at DESC')
     @location = @item.locations.new
-    @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
-      marker.lat location.latitude
-      marker.lng location.longitude
-      marker.infowindow location.created_at.strftime('%-m月%-d日 %H時%M分') + "に登録 (#{location.address})"
-      marker.json({ address: location.address })
-      # marker.picture({ url: view_context.image_path('logo.png'), width: 32, height: 32 })
-    end
-    @polylines = @hash.map{ |e| e.except(:infowindow, :address) }
+    @hash = build_gmap_marker(@locations)
+    @polylines = @hash.map { |e| e.except(:infowindow, :address) }
   end
 
   def new
@@ -25,8 +21,7 @@ class ItemsController < ApplicationController
     @item.locations.build
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     item = Item.new(item_params)
@@ -42,7 +37,7 @@ class ItemsController < ApplicationController
   def update
     if @item.update
       redirect_to controller: :items, action: :show
-      notice[:success] = "アイテムの情報が更新されました!"
+      notice[:success] = 'アイテムの情報が更新されました!'
     else
       render :edit
     end
@@ -63,11 +58,11 @@ class ItemsController < ApplicationController
 
   def tweet
     @item = current_user.items.find(params[:id])
-    User::TweetItemService.new.post_to_twitter(@item.name, @item.image.url)
+    User::TweetItemService.new(@item).execute
     redirect_to root_path, notice: 'ok?'
   end
 
-private
+  private
 
   def set_item
     @item = Item.find(params[:id])
@@ -77,15 +72,25 @@ private
     @q = current_user.items.search
   end
 
+  def build_gmap_marker(locations)
+    Gmaps4rails.build_markers(locations) do |location, marker|
+      marker.lat location.latitude
+      marker.lng location.longitude
+      marker.infowindow location.created_at.strftime('%-m月%-d日 %H時%M分') + "に登録 (#{location.address})"
+      marker.json(address: location.address)
+    end
+  end
+
   def item_params
     params.require(:item)
-    .permit(
-      :name,
-      :maker,
-      :image,
-      locations_attributes:
-        [:latitude,
-         :longitude,
-         :user_id]).merge(user_id: current_user.id)
+          .permit(
+            :name,
+            :maker,
+            :image,
+            locations_attributes:
+              %i[latitude
+                 longitude
+                 user_id]
+          ).merge(user_id: current_user.id)
   end
 end

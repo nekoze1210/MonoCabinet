@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class LocationsController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-  end
+  def index; end
 
   def create
     # binding.pry
@@ -17,10 +18,9 @@ class LocationsController < ApplicationController
     @location.item_id = @item.id
   end
 
-  def destroy
-  end
+  def destroy; end
 
-private
+  private
 
   def set_user
     @user = current_user
