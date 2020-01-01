@@ -1,8 +1,10 @@
 inherit_from: rubocop_todo.yml
 
-# 日本語でのコメントを許可
 Style/AsciiComments:
   Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
 
 Style/Lambda:
   Enabled: false
@@ -13,7 +15,6 @@ Style/ClassAndModuleChildren:
 Style/Documentation:
   Enabled: false
 
-# 「and」「or」の使用を許可
 Style/AndOr:
   Enabled: false
 
