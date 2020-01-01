@@ -25,7 +25,6 @@ class ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
-    item.remote_image_url = SearchRakutenItemService.new(item.name).find_thumbnail if item.image.blank? && params[:use_rakuten]
     if item.save
       redirect_to user_items_path(current_user), notice: 'アイテムの情報が登録されました。'
     else
@@ -91,6 +90,6 @@ class ItemsController < ApplicationController
               %i[latitude
                  longitude
                  user_id]
-          ).merge(user_id: current_user.id)
+          ).merge(user_id: current_user.id).to_h
   end
 end

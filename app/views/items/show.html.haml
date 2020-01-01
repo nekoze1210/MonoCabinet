@@ -1,8 +1,8 @@
 .container
   .col-md-12{:style => "padding-top: 20px;"}
     #image-container.col-md-6.col-xs-12.text-center
-      - if @item.image?
-        = image_tag @item.image.url, class: 'img img-responsive'
+      - if @item.image.present?
+        = image_tag @item.image, class: 'img img-responsive'
       - else
         = image_tag 'noimage.png', class: 'img img-responsive'
     .col-md-6.col-xs-12{:style => "border:2px solid #bdc3c7; border-radius:10px; "}
@@ -41,14 +41,13 @@
           %tr
             %td= location.address
             %td
-              %a.text-right.btn.btn-danger{:href => "http://maps.google.co.jp/maps?q=#{location.address}", :target => "_blank"} [GoogleMapで確認]
+              %a.text-right.btn.btn-danger{:href => "http://maps.google.co.jp/maps?q=#{location.address}", target: "_blank"} [GoogleMapで確認]
             %td= location.created_at.strftime('%Y年%m月%d日 %H:%M')
   .col-md-12.col-xs-12
     #map{:style => "width: 100%; height: 250px;"}
   .col-md-12.col-xs-12{style: 'padding-top: 20px;'}
     = link_to '削除', user_item_path, method: :delete, class: 'btn btn-danger', confirm: "登録されたアイテム、位置情報は削除されます。\n 本当によろしいですか?"
     = link_to '戻る', user_items_path, class: 'btn btn-default'
-    = link_to 'ツイートする', tweet_user_items_path(user_id: current_user, id: @item), method: :post, class: 'btn btn-warning'
 
 :javascript
   handler = Gmaps.build('Google');

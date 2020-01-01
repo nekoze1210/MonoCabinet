@@ -281,6 +281,9 @@ GEM
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    pry-byebug (3.7.0)
+      byebug (~> 11.0)
+      pry (~> 0.10)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.1)
@@ -320,7 +323,6 @@ GEM
       thor (>= 0.20.3, < 2.0)
     rainbow (3.0.0)
     rake (13.0.1)
-    rakuten_web_service (1.12.0)
     ransack (2.3.0)
       actionpack (>= 5.0)
       activerecord (>= 5.0)
@@ -420,7 +422,6 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.4.1)
   bullet
-  byebug
   carrierwave
   coffee-rails
   config
@@ -441,10 +442,10 @@ DEPENDENCIES
   omniauth-twitter
   paperclip
   pg
+  pry-byebug
   pry-rails
   rails (= 6.0.2)
   rails_12factor
-  rakuten_web_service
   ransack
   rubocop
   sassc-rails (>= 2.1.0)
@@ -458,4 +459,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   2.0.2
+   2.1.2
