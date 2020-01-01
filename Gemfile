@@ -31,7 +31,7 @@ gem 'omniauth-twitter'
 gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 
 group :development, :test do
-  gem 'byebug'
+  gem 'pry-byebug'
   gem 'pry-rails'
 end
 
